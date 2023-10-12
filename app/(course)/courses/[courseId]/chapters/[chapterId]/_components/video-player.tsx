@@ -30,6 +30,7 @@ export const VideoPlayer = ({
   title,
 }: VideoPlayerProps) => {
   const [isReady, setIsReady] = useState(false);
+
   return (
     <div className="relative aspect-video">
       {!isReady && !isLocked && (

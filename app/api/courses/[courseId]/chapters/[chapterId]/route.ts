@@ -105,7 +105,7 @@ export async function PATCH(
     const ownCourse = await db.course.findUnique({
       where: {
         id: params.courseId,
-        userId: userId,
+        userId,
       },
     });
 
@@ -114,8 +114,13 @@ export async function PATCH(
     }
 
     const chapter = await db.chapter.update({
-      where: { id: params.chapterId, courseId: params.courseId },
-      data: { ...values },
+      where: {
+        id: params.chapterId,
+        courseId: params.courseId,
+      },
+      data: {
+        ...values,
+      },
     });
 
     if (values.videoUrl) {
